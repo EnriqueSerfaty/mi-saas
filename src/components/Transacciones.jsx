@@ -24,22 +24,22 @@ function Transacciones({ transacciones, setTransacciones }) {
 
       <div className="bg-white rounded-xl shadow p-6 mb-6">
         <h3 className="font-semibold text-gray-700 mb-4">Nueva transacción</h3>
-        <div className="flex gap-3 flex-wrap">
+        <div className="flex flex-col md:flex-row gap-3">
           <input
-            className="border border-gray-300 rounded-lg px-4 py-2 flex-1 min-w-40"
+            className="border border-gray-300 rounded-lg px-4 py-2 w-full md:flex-1"
             placeholder="Descripción"
             value={descripcion}
             onChange={(e) => setDescripcion(e.target.value)}
           />
           <input
-            className="border border-gray-300 rounded-lg px-4 py-2 w-36"
+            className="border border-gray-300 rounded-lg px-4 py-2 w-full md:w-36"
             type="number"
             placeholder="Monto"
             value={monto}
             onChange={(e) => setMonto(e.target.value)}
           />
           <select
-            className="border border-gray-300 rounded-lg px-4 py-2"
+            className="border border-gray-300 rounded-lg px-4 py-2 w-full md:w-auto"
             onChange={(e) => setTipo(e.target.value)}
           >
             <option value="ingreso">Ingreso</option>
@@ -47,7 +47,7 @@ function Transacciones({ transacciones, setTransacciones }) {
           </select>
           <button
             onClick={agregar}
-            className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700"
+            className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 w-full md:w-auto"
           >
             Agregar
           </button>
@@ -59,13 +59,13 @@ function Transacciones({ transacciones, setTransacciones }) {
           <p className="text-gray-400 text-center py-8">Sin transacciones aún</p>
         )}
         {[...transacciones].reverse().map((t, i) => (
-          <div key={i} className="flex items-center justify-between px-6 py-4 border-b last:border-0">
+          <div key={i} className="flex items-center justify-between px-4 md:px-6 py-4 border-b last:border-0">
             <div>
               <p className="font-medium text-gray-800">{t.descripcion}</p>
               <p className="text-sm text-gray-400">{t.tipo}</p>
             </div>
-            <div className="flex items-center gap-4">
-              <span className={`font-bold ${t.tipo === 'ingreso' ? 'text-green-600' : 'text-red-500'}`}>
+            <div className="flex items-center gap-3">
+              <span className={`font-bold text-sm md:text-base ${t.tipo === 'ingreso' ? 'text-green-600' : 'text-red-500'}`}>
                 {t.tipo === 'ingreso' ? '+' : '-'}{formatearMonto(t.monto)}
               </span>
               <button onClick={() => eliminar(transacciones.length - 1 - i)} className="text-gray-300 hover:text-red-400">✕</button>
