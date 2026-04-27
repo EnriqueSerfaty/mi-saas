@@ -45,7 +45,7 @@ function App() {
     <div className="min-h-screen bg-gray-100">
       <nav className="bg-white shadow px-6 py-4">
         <div className="flex items-center justify-between">
-          <span className="font-bold text-xl text-blue-600">BizPanel</span>
+          <span className="font-bold text-xl text-blue-600">Serfaty Hub</span>
 
           {/* Menu desktop */}
           <div className="hidden md:flex gap-4 items-center">
